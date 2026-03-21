@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sther - Portfólio de Projetos de Melhoria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e27;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #60a5fa 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+        }
+
+        .big-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            width: 100%;
+        }
+
+        .big-number-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .big-number-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: rotate 6s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .big-number-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+        }
+
+        .big-number-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-number-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .big-number-value {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: countUp 2s ease-out forwards;
+        }
+
+        .big-number-description {
+            font-size: 1rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .impact-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            opacity: 0.5;
+        }
+
+        .main-content {
+            background: #0a0e27;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .tool-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-live {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-dev {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .tool-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 1rem;
+        }
+
+        .tool-description {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .tool-metrics {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .metric-item::before {
+            content: '→';
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .metric-highlight {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.75rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid #0a0e27;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .timeline-date {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .stats-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: scale(1.05);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            text-align: center;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #a78bfa;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .big-number-value {
+                font-size: 3rem;
+            }
+
+            .big-numbers {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item::before {
+                left: -2.75rem;
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="float-animation">Portfólio de Projetos de Melhoria</h1>
+            <p style="font-size: 1.5rem; font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">Sther - Engenheira de Produção | Mestranda em Gerenciamento da Produção</p>
+            <p>Especializada em melhoria contínua e otimização de processos através de automação e IA.<br>
+            Foco em eliminação de gargalos operacionais para ganho de tempo e garantia da qualidade.</p>
+
+            <div class="big-numbers">
+                <div class="big-number-card">
+                    <div class="big-number-content">
+                        <div class="big-number-label">Economia Diária</div>
+                        <div class="big-number-value" data-target="15">0</div>
+                        <div class="big-number-description">minutos de cálculo manual eliminados por dia</div>
+                        <div class="impact-badge">KPI em tempo real</div>
+                    </div>
+                </div>
+
+                <div class="big-number-card">
+                    <div class="big-number-content">
+                        <div class="big-number-label">Redução de Tempo</div>
+                        <div class="big-number-value" data-target="75">0</div>
+                        <div class="big-number-description">% menos tempo em atualização de planilhas MVP</div>
+                        <div class="impact-badge">De 2h para ~30min</div>
+                    </div>
+                </div>
+
+                <div class="big-number-card">
+                    <div class="big-number-content">
+                        <div class="big-number-label">Ferramentas</div>
+                        <div class="big-number-value" data-target="5">0</div>
+                        <div class="big-number-description">automações desenvolvidas e em produção</div>
+                        <div class="impact-badge">2 live + 3 em dev</div>
+                    </div>
+                </div>
+
+                <div class="big-number-card">
+                    <div class="big-number-content">
+                        <div class="big-number-label">Impacto Real</div>
+                        <div class="big-number-value">↓</div>
+                        <div class="big-number-description">Taxa de atrasos com gamificação e competição saudável</div>
+                        <div class="impact-badge">Metas visíveis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="section">
+            <h2 class="section-title">💡 Sobre</h2>
+            
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 2rem;">
+                    Engenheira de Produção com expertise em <strong style="color: #60a5fa;">melhoria contínua</strong> e 
+                    <strong style="color: #60a5fa;">otimização de processos</strong>. Atualmente cursando Mestrado em Gerenciamento da Produção, 
+                    aplico conhecimentos acadêmicos e práticos para desenvolver soluções que <strong style="color: #10b981;">eliminam gargalos operacionais</strong>, 
+                    reduzem tempo de execução e <strong style="color: #10b981;">garantem qualidade</strong> nos processos.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="padding: 1.5rem; background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                        <div style="font-weight: 600; color: #60a5fa; margin-bottom: 0.5rem;">Foco</div>
+                        <div style="color: #cbd5e1; font-size: 0.95rem;">Eliminação de gargalos e otimização de fluxos operacionais</div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                        <div style="font-weight: 600; color: #10b981; margin-bottom: 0.5rem;">Método</div>
+                        <div style="color: #cbd5e1; font-size: 0.95rem;">Automação inteligente e análise de dados para ganho de tempo</div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem; background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 16px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                        <div style="font-weight: 600; color: #a78bfa; margin-bottom: 0.5rem;">Resultado</div>
+                        <div style="color: #cbd5e1; font-size: 0.95rem;">Processos eficientes com garantia de qualidade e escalabilidade</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🚀 Ferramentas Implementadas</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">📊</div>
+                        <div class="tool-status status-live">✓ Implementado</div>
+                    </div>
+                    <h3 class="tool-title">Sistema de KPIs de Atraso Automatizado</h3>
+                    <p class="tool-description">
+                        Plataforma completa que transformou o cálculo manual diário de KPIs em um sistema totalmente automatizado com visualização em tempo real, color coding e integração com dashboards.
+                    </p>
+                    <div class="tool-tech">
+                        <span class="tech-tag">Google Sheets API</span>
+                        <span class="tech-tag">Apps Script</span>
+                        <span class="tech-tag">Automação</span>
+                        <span class="tech-tag">Data Viz</span>
+                    </div>
+                    <div class="tool-metrics">
+                        <div class="metric-item">
+                            <span class="metric-highlight">15 min → 0 min</span> de cálculo manual por dia
+                        </div>
+                        <div class="metric-item">
+                            Visualização estratégica com indicadores de performance
+                        </div>
+                        <div class="metric-item">
+                            Histórico automático para análise de tendências
+                        </div>
+                        <div class="metric-item">
+                            Gamificação aumentou senso de urgência do time
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🎯</div>
+                        <div class="tool-status status-live">✓ Implementado</div>
+                    </div>
+                    <h3 class="tool-title">Controle de MVP Automatizado</h3>
+                    <p class="tool-description">
+                        Sistema inteligente que eliminou a verificação manual card por card, aplicando regras de negócio automaticamente e gerando insights em tempo real para Looker Studio.
+                    </p>
+                    <div class="tool-tech">
+                        <span class="tech-tag">Google Sheets</span>
+                        <span class="tech-tag">Apps Script</span>
+                        <span class="tech-tag">Looker Studio</span>
+                        <span class="tech-tag">ETL</span>
+                    </div>
+                    <div class="tool-metrics">
+                        <div class="metric-item">
+                            <span class="metric-highlight">2h → 30min</span> de atualização de status
+                        </div>
+                        <div class="metric-item">
+                            Color code automático para visualização rápida
+                        </div>
+                        <div class="metric-item">
+                            Regras de sucesso e reincidência automatizadas
+                        </div>
+                        <div class="metric-item">
+                            Dashboard BI com dados em tempo real
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">⚙️ Em Desenvolvimento</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🤖</div>
+                        <div class="tool-status status-dev">⚡ Em Dev</div>
+                    </div>
+                    <h3 class="tool-title">IA para Análise de Tratativas</h3>
+                    <p class="tool-description">
+                        Sistema de IA que processa até 10 links de cards simultaneamente, extrai informações dos comentários e gera tabelas estruturadas automaticamente para apresentações.
+                    </p>
+                    <div class="tool-tech">
+                        <span class="tech-tag">AI/ML</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">API Integration</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="tool-metrics">
+                        <div class="metric-item">
+                            <span class="metric-highlight">Até 20 min</span> economizados por elaboração
+                        </div>
+                        <div class="metric-item">
+                            Extração automática de nome, datas e status
+                        </div>
+                        <div class="metric-item">
+                            Resumo inteligente de tratativas atuais
+                        </div>
+                        <div class="metric-item">
+                            Processamento em lote para múltiplos cards
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">💻</div>
+                        <div class="tool-status status-dev">⚡ Em Dev</div>
+                    </div>
+                    <h3 class="tool-title">Front-End Web para Controle de MVP</h3>
+                    <p class="tool-description">
+                        Interface web dedicada para substituir planilhas, com proteção contra erros, escalabilidade infinita e UX otimizado para operações diárias dos analistas.
+                    </p>
+                    <div class="tool-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">UI/UX</span>
+                    </div>
+                    <div class="tool-metrics">
+                        <div class="metric-item">
+                            Sem limite de células/registros
+                        </div>
+                        <div class="metric-item">
+                            Proteção contra edição acidental de dados
+                        </div>
+                        <div class="metric-item">
+                            Formulários inteligentes para novos registros
+                        </div>
+                        <div class="metric-item">
+                            Interface intuitiva e responsiva
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔍</div>
+                        <div class="tool-status status-dev">⚡ Em Dev</div>
+                    </div>
+                    <h3 class="tool-title">IA para Validação de Anúncios</h3>
+                    <p class="tool-description">
+                        Sistema de validação em massa que verifica anúncios desvinculados, identifica sellers corretamente e previne criação duplicada de cards automaticamente.
+                    </p>
+                    <div class="tool-tech">
+                        <span class="tech-tag">Web Scraping</span>
+                        <span class="tech-tag">AI/ML</span>
+                        <span class="tech-tag">Data Validation</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="tool-metrics">
+                        <div class="metric-item">
+                            <span class="metric-highlight">75%</span> de redução em tempo de verificação
+                        </div>
+                        <div class="metric-item">
+                            Validação automática de URLs em massa
+                        </div>
+                        <div class="metric-item">
+                            Identificação correta de loja vs perfil
+                        </div>
+                        <div class="metric-item">
+                            Eliminação de duplicação de cards
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">📈 Jornada de Desenvolvimento</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Fase 1 - Concluída</div>
+                    <div class="timeline-title">Automação de Processos Repetitivos</div>
+                    <div class="timeline-content">
+                        Implementação de automações para eliminar trabalho manual diário. Foco em cálculos, atualizações de planilhas e geração de relatórios. Resultado: <strong>57% de redução de tempo</strong> em processos críticos e visualização estratégica completa.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Fase 2 - Em Progresso</div>
+                    <div class="timeline-title">Inteligência Artificial para Análise</div>
+                    <div class="timeline-content">
+                        Desenvolvimento de sistemas de IA para análise de dados complexos, extração de insights e validação em massa. Foco em NLP, web scraping e processamento inteligente. Ganho projetado: <strong>20-75% adicional</strong> dependendo da tarefa.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Fase 3 - Planejada</div>
+                    <div class="timeline-title">IA Generativa para Criação de Conteúdo</div>
+                    <div class="timeline-content">
+                        Integração com Gemini para geração automática de materiais de apresentação. Sistema lerá dados estruturados e criará slides formatados seguindo templates. Impacto esperado: <strong>~90% de otimização</strong> no processo completo de elaboração.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">💡 Stack Técnico</h2>
+            
+            <div class="stats-showcase">
+                <div class="stat-box">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Tecnologias</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Prod</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Em Dev</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Automação</div>
+                </div>
+            </div>
+
+            <div class="tools-grid" style="margin-top: 3rem;">
+                <div class="tool-card">
+                    <div class="tool-icon">⚡</div>
+                    <h3 class="tool-title">Automação & Scripts</h3>
+                    <div class="tool-tech">
+                        <span class="tech-tag">Google Apps Script</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">APIs</span>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-title">Inteligência Artificial</h3>
+                    <div class="tool-tech">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Gemini API</span>
+                        <span class="tech-tag">AI Integration</span>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3 class="tool-title">Data & Analytics</h3>
+                    <div class="tool-tech">
+                        <span class="tech-tag">Looker Studio</span>
+                        <span class="tech-tag">Google Sheets</span>
+                        <span class="tech-tag">ETL</span>
+                        <span class="tech-tag">Data Viz</span>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3 class="tool-title">Web Development</h3>
+                    <div class="tool-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Sther</strong> - Engenheira de Produção | Mestranda em Gerenciamento da Produção</p>
+        <p style="margin-top: 0.5rem;">🚀 Transformando processos manuais em soluções inteligentes e eficientes</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #64748b;">Melhoria Contínua • Otimização de Processos • Automação • Inteligência Artificial</p>
+    </footer>
+
+    <script>
+        // Animação dos big numbers
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (end === 75 ? '%' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Intersection Observer para animar quando visível
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const target = parseInt(element.getAttribute('data-target'));
+                    if (target) {
+                        animateValue(element, 0, target, 2000);
+                        observer.unobserve(element);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observar todos os big numbers
+        document.addEventListener('DOMContentLoaded', () => {
+            const bigNumbers = document.querySelectorAll('.big-number-value[data-target]');
+            bigNumbers.forEach(num => observer.observe(num));
+        });
+
+        // Smooth scroll
+        document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
