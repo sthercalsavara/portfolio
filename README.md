@@ -8,7 +8,7 @@ Portfólio interativo apresentando projetos de automação, otimização de proc
 
 - **75%** de redução em tempo de processos críticos
 - **15 minutos** economizados diariamente em cálculos manuais
-- **5 ferramentas** desenvolvidas (2 implementadas + 3 em desenvolvimento)
+- **3 ferramentas** implementadas + **2 em desenvolvimento**
 
 ## 🛠️ Projetos Implementados
 
@@ -24,9 +24,14 @@ Portfólio interativo apresentando projetos de automação, otimização de proc
 - ✅ Regras de negócio automatizadas
 - ✅ Color coding e alertas automáticos
 
+### IA para Análise de Tratativas
+- ✅ Processamento de até 10 cards simultaneamente
+- ✅ Extração automática de informações de comentários
+- ✅ Geração de tabelas estruturadas para apresentações
+- ✅ Economia de até 20 min por elaboração de material
+
 ## ⚙️ Projetos em Desenvolvimento
 
-- 🤖 **IA para Análise de Tratativas** - Processamento de até 10 cards simultaneamente
 - 💻 **Front-end Web para MVP** - Interface segura e escalável
 - 🔍 **IA para Validação de Anúncios** - Verificação automática em massa
 
